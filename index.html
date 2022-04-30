@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <title>Weather Dashboard</title>
+  </head>
+  <body>
+    <header>
+      <div>
+        <h1 class="text-center bg-primary text-light py-3">
+          Weather Dashboard
+        </h1>
+      </div>
+    </header>
+
+    <div class="container">
+      <div class="row my-5">
+        <aside class="col-3 container">
+          <div id="city-search" class="row">
+            <div class="col-12">
+              <h2>Search for a City:</h2>
+            </div>
+            <div class="col-12">
+              <form action="">
+                <input type="text" name="city" class="form-control" />
+                <button
+                  name="city"
+                  type="submit"
+                  class="form-control btn btn-primary"
+                >
+                  Search
+                </button>
+              </form>
+            </div>
+          </div>
+          <div id="search-history" class="row my-2">
+            <button
+              type="button"
+              class="search-result btn btn-secondary col-12 my-2"
+            >
+              Kansas City
+            </button>
+            <button
+              type="button"
+              class="search-result btn btn-secondary col-12 my-2"
+            >
+              Denver
+            </button>
+            <button
+              type="button"
+              class="search-result btn btn-secondary col-12 my-2"
+            >
+              Omaha
+            </button>
+            <button
+              type="button"
+              class="search-result btn btn-secondary col-12 my-2"
+            >
+              Oklahoma City
+            </button>
+          </div>
+        </aside>
+        <main class="col-9">
+          <div id="weather-today-container" class="border border-primary p-3">
+            <h2 id="current-city">Kansas City 4/30/2022</h2>
+            <p id="current-city-temp" class="lead">Temp: 74 DEG F</p>
+            <p id="current-city-wind" class="lead">Wind: 7 MPH</p>
+            <p id="current-city-humidity" class="lead">Humidity: 46%</p>
+            <p id="current-city-uv" class="lead">UV Index: 0.47</p>
+          </div>
+          <div id="five-day-container" class="container p-3">
+            <div id="five-day-title" class="row mb-2">
+              <h3>5-Day Forecast</h3>
+            </div>
+            <div id="five-day-div" class="row">
+              <div
+                id="day-one"
+                class="five-day-card col bg-dark p-2 text-light"
+              >
+                <h4 id="day-one-date">4/31/2022</h4>
+                <p id="day-one-temp">Temp: 73 DEG F</p>
+                <p id="day-one-wind">Wind: 10 MPH</p>
+                <p id="day-one-humidity">Humidity: 66%</p>
+              </div>
+              <div
+                id="day-two"
+                class="five-day-card col bg-dark p-2 text-light"
+              >
+                <h4 id="day-two-date">5/1/2022</h4>
+                <p id="day-two-temp">Temp: 73 DEG F</p>
+                <p id="day-two-wind">Wind: 10 MPH</p>
+                <p id="day-two-humidity">Humidity: 66%</p>
+              </div>
+              <div
+                id="day-three"
+                class="five-day-card col bg-dark p-2 text-light"
+              >
+                <h4 id="day-three-date">5/2/2022</h4>
+                <p id="day-three-temp">Temp: 73 DEG F</p>
+                <p id="day-three-wind">Wind: 10 MPH</p>
+                <p id="day-three-humidity">Humidity: 66%</p>
+              </div>
+              <div
+                id="day-four"
+                class="five-day-card col bg-dark p-2 text-light"
+              >
+                <h4 id="day-four-date">5/3/2022</h4>
+                <p id="day-four-temp">Temp: 73 DEG F</p>
+                <p id="day-four-wind">Wind: 10 MPH</p>
+                <p id="day-four-humidity">Humidity: 66%</p>
+              </div>
+              <div
+                id="day-five"
+                class="five-day-card col bg-dark p-2 text-light"
+              >
+                <h4 id="day-five-date">5/4/2022</h4>
+                <p id="day-five-temp">Temp: 73 DEG F</p>
+                <p id="day-five-wind">Wind: 10 MPH</p>
+                <p id="day-five-humidity">Humidity: 66%</p>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
+    <script src="./assets/js/script.js"></script>
+  </body>
+</html>
