@@ -51,9 +51,20 @@ var getCityWeather = function (geoCode, citySearch) {
 
 var displayWeather = function (weather, city) {
   var currentWeather = weather.current;
+  var currentDate = new Date(currentWeather.dt * 1000);
 
-  console.log(currentWeather);
-  console.log(currentWeather.temp);
+  console.log(weather);
+  console.log(currentDate.toLocaleDateString());
+
+  for (var i = 0; i < 5; i++) {
+    var dailyWeather = weather.daily[i];
+    var dailyDate = new Date(dailyWeather.dt * 1000);
+
+    console.log(dailyDate.toLocaleDateString());
+    console.log(dailyWeather.temp.day);
+    console.log(dailyWeather.wind_speed);
+    console.log(dailyWeather.humidity);
+  }
 };
 
 getCityCoordinates("Chicago");
