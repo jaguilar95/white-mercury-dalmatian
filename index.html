@@ -31,11 +31,11 @@
             </div>
             <div class="col-12">
               <form action="">
-                <input type="text" name="city" class="form-control" />
+                <input type="text" name="city" class="form-control my-2" />
                 <button
                   name="city"
                   type="submit"
-                  class="form-control btn btn-primary"
+                  class="form-control btn btn-primary my-2"
                 >
                   Search
                 </button>
@@ -43,30 +43,34 @@
             </div>
           </div>
           <div id="search-history" class="row my-2">
-            <button
-              type="button"
-              class="search-result btn btn-secondary col-12 my-2"
-            >
-              Kansas City
-            </button>
-            <button
-              type="button"
-              class="search-result btn btn-secondary col-12 my-2"
-            >
-              Denver
-            </button>
-            <button
-              type="button"
-              class="search-result btn btn-secondary col-12 my-2"
-            >
-              Omaha
-            </button>
-            <button
-              type="button"
-              class="search-result btn btn-secondary col-12 my-2"
-            >
-              Oklahoma City
-            </button>
+            <div class="col-12">
+              <div class="d-flex flex-column">
+                <button
+                  type="button"
+                  class="search-result btn btn-secondary my-2 w-100"
+                >
+                  Kansas City
+                </button>
+                <button
+                  type="button"
+                  class="search-result btn btn-secondary my-2 w-100"
+                >
+                  Denver
+                </button>
+                <button
+                  type="button"
+                  class="search-result btn btn-secondary my-2 w-100"
+                >
+                  Omaha
+                </button>
+                <button
+                  type="button"
+                  class="search-result btn btn-secondary my-2 w-100"
+                >
+                  Oklahoma City
+                </button>
+              </div>
+            </div>
           </div>
         </aside>
         <main class="col-9">
@@ -81,10 +85,10 @@
             <div id="five-day-title" class="row mb-2">
               <h3>5-Day Forecast</h3>
             </div>
-            <div id="five-day-div" class="row">
+            <div id="five-day-div" class="row justify-content-around">
               <div
                 id="day-one"
-                class="five-day-card col bg-dark p-2 text-light"
+                class="five-day-card col-2 bg-dark p-2 text-light"
               >
                 <h4 id="day-one-date">4/31/2022</h4>
                 <p id="day-one-temp">Temp: 73 DEG F</p>
@@ -93,7 +97,7 @@
               </div>
               <div
                 id="day-two"
-                class="five-day-card col bg-dark p-2 text-light"
+                class="five-day-card col-2 bg-dark p-2 text-light"
               >
                 <h4 id="day-two-date">5/1/2022</h4>
                 <p id="day-two-temp">Temp: 73 DEG F</p>
@@ -102,7 +106,7 @@
               </div>
               <div
                 id="day-three"
-                class="five-day-card col bg-dark p-2 text-light"
+                class="five-day-card col-2 bg-dark p-2 text-light"
               >
                 <h4 id="day-three-date">5/2/2022</h4>
                 <p id="day-three-temp">Temp: 73 DEG F</p>
@@ -111,7 +115,7 @@
               </div>
               <div
                 id="day-four"
-                class="five-day-card col bg-dark p-2 text-light"
+                class="five-day-card col-2 bg-dark p-2 text-light"
               >
                 <h4 id="day-four-date">5/3/2022</h4>
                 <p id="day-four-temp">Temp: 73 DEG F</p>
@@ -120,7 +124,7 @@
               </div>
               <div
                 id="day-five"
-                class="five-day-card col bg-dark p-2 text-light"
+                class="five-day-card col-2 bg-dark p-2 text-light"
               >
                 <h4 id="day-five-date">5/4/2022</h4>
                 <p id="day-five-temp">Temp: 73 DEG F</p>
