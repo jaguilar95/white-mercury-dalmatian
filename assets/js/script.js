@@ -1,3 +1,7 @@
+// form element declaration
+var formEl = document.getElementById("city-form");
+var searchEl = document.getElementById("form-search");
+
 var getCityCoordinates = function (cityName) {
   var apiUrlCity =
     "http://api.openweathermap.org/geo/1.0/direct?q=" +
@@ -89,4 +93,11 @@ var displayWeather = function (weather, city) {
   }
 };
 
-getCityCoordinates("Chicago");
+var logCityName = function (event) {
+  var citySubmit = document.getElementById("form-search").value;
+
+  getCityCoordinates(citySubmit);
+  event.preventDefault();
+};
+
+formEl.addEventListener("submit", logCityName);
