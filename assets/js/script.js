@@ -1,6 +1,9 @@
 // form element declaration
 var formEl = document.getElementById("city-form");
 var searchEl = document.getElementById("form-search");
+var citySubmitEl = document.getElementById("form-search");
+
+var cityArr = [];
 
 var getCityCoordinates = function (cityName) {
   var apiUrlCity =
@@ -56,6 +59,8 @@ var getCityWeather = function (geoCode, citySearch) {
 var displayWeather = function (weather, city) {
   var currentWeather = weather.current;
   var currentDate = new Date(currentWeather.dt * 1000);
+  var currentWeatherIcon = currentWeather.weather[0].icon;
+  var currentWeatherMain = currentWeather.weather[0].main;
 
   // current weather dom declarations
   var cityTitleEl = document.getElementById("current-city");
@@ -65,18 +70,25 @@ var displayWeather = function (weather, city) {
   var cityUvEl = document.getElementById("current-city-uv");
 
   // assign text content from API search
-  cityTitleEl.textContent =
-    city + " (" + currentDate.toLocaleDateString() + ")";
+  cityTitleEl.innerHTML =
+    city +
+    " (" +
+    currentDate.toLocaleDateString() +
+    ")<img src='http://openweathermap.org/img/wn/" +
+    currentWeatherIcon +
+    "@2x.png' alt='" +
+    currentWeatherMain +
+    "'>";
   cityTempEl.textContent = "Temp: " + currentWeather.temp;
   cityWindEl.textContent = "Wind: " + currentWeather.wind_speed;
   cityHumidityEl.textContent = "Humidity: " + currentWeather.humidity;
   cityUvEl.textContent = "UV Index: " + currentWeather.uvi;
 
-  console.log(currentWeather);
-
   for (var i = 1; i < 6; i++) {
     var dailyWeather = weather.daily[i];
     var dailyDate = new Date(dailyWeather.dt * 1000);
+
+    console.log(dailyWeather);
 
     // declare 5-day dom elements
     var cityForecastDate = document.getElementById("day-" + i + "-date");
@@ -86,7 +98,13 @@ var displayWeather = function (weather, city) {
       "day-" + i + "-humidity"
     );
 
-    cityForecastDate.textContent = dailyDate.toLocaleDateString();
+    cityForecastDate.innerHTML =
+      dailyDate.toLocaleDateString() +
+      "<img src='http://openweathermap.org/img/wn/" +
+      dailyWeather.weather[0].icon +
+      "@2x.png' alt='" +
+      dailyWeather.weather[0].main +
+      "'>";
     cityForecastTemp.textContent = "Temp: " + dailyWeather.temp.day;
     cityForecastWind.textContent = "Wind: " + dailyWeather.wind_speed;
     cityForecastHumidity.textContent = "Humidity: " + dailyWeather.humidity;
@@ -94,10 +112,60 @@ var displayWeather = function (weather, city) {
 };
 
 var logCityName = function (event) {
-  var citySubmit = document.getElementById("form-search").value;
+  var citySubmit = citySubmitEl.value;
 
   getCityCoordinates(citySubmit);
   event.preventDefault();
+
+  displayRecent(citySubmit);
 };
 
+var displayRecent = function (recentCity) {
+  cityArr.unshift(recentCity);
+
+  // set cityArr max to 5
+  if (cityArr.length > 5) {
+    cityArr.pop();
+  }
+
+  saveCities();
+  loadCities();
+};
+
+var saveCities = function () {
+  localStorage.setItem("cities", JSON.stringify(cityArr));
+};
+
+var loadCities = function () {
+  var recentCitiesEl = document.getElementById("button-container");
+
+  // remove any existing buttons
+  while (recentCitiesEl.firstChild) {
+    recentCitiesEl.removeChild(recentCitiesEl.firstChild);
+  }
+
+  cityArr = JSON.parse(localStorage.getItem("cities"));
+
+  if (!cityArr) {
+    cityArr = [];
+  }
+
+  cityArr.forEach((element) => {
+    var buttonEl = document.createElement("button");
+    buttonEl.setAttribute("type", "submit");
+    buttonEl.setAttribute(
+      "class",
+      "search-result btn btn-secondary my-2 w-100"
+    );
+    buttonEl.textContent = element;
+    recentCitiesEl.appendChild(buttonEl);
+
+    buttonEl.addEventListener("click", function () {
+      citySubmitEl.value = buttonEl.textContent;
+      formEl.requestSubmit();
+    });
+  });
+};
+
+loadCities();
 formEl.addEventListener("submit", logCityName);
