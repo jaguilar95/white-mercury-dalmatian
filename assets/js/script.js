@@ -79,16 +79,22 @@ var displayWeather = function (weather, city) {
     "@2x.png' alt='" +
     currentWeatherMain +
     "'>";
-  cityTempEl.textContent = "Temp: " + currentWeather.temp;
-  cityWindEl.textContent = "Wind: " + currentWeather.wind_speed;
-  cityHumidityEl.textContent = "Humidity: " + currentWeather.humidity;
+  cityTempEl.textContent = "Temp: " + currentWeather.temp + " DEG F";
+  cityWindEl.textContent = "Wind: " + currentWeather.wind_speed + " MPH";
+  cityHumidityEl.textContent = "Humidity: " + currentWeather.humidity + "%";
   cityUvEl.textContent = "UV Index: " + currentWeather.uvi;
+
+  if (currentWeather.uvi < 2) {
+    cityUvEl.className = "bg-success text-white lead w-25 rounded";
+  } else if (currentWeather.uvi > 7) {
+    cityUvEl.className = "bg-danger text-white lead w-25 rounded";
+  } else {
+    cityUvEl.className = "bg-warning text-dark lead w-25 rounded";
+  }
 
   for (var i = 1; i < 6; i++) {
     var dailyWeather = weather.daily[i];
     var dailyDate = new Date(dailyWeather.dt * 1000);
-
-    console.log(dailyWeather);
 
     // declare 5-day dom elements
     var cityForecastDate = document.getElementById("day-" + i + "-date");
@@ -105,9 +111,10 @@ var displayWeather = function (weather, city) {
       "@2x.png' alt='" +
       dailyWeather.weather[0].main +
       "'>";
-    cityForecastTemp.textContent = "Temp: " + dailyWeather.temp.day;
-    cityForecastWind.textContent = "Wind: " + dailyWeather.wind_speed;
-    cityForecastHumidity.textContent = "Humidity: " + dailyWeather.humidity;
+    cityForecastTemp.textContent = "Temp: " + dailyWeather.temp.day + " DEG F";
+    cityForecastWind.textContent = "Wind: " + dailyWeather.wind_speed + " MPH";
+    cityForecastHumidity.textContent =
+      "Humidity: " + dailyWeather.humidity + "%";
   }
 };
 
