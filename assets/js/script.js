@@ -7,9 +7,9 @@ var cityArr = [];
 
 var getCityCoordinates = function (cityName) {
   var apiUrlCity =
-    "http://api.openweathermap.org/geo/1.0/direct?q=" +
+    "https://api.openweathermap.org/data/2.5/weather?q=" +
     cityName +
-    "&limit=1&appid=4e120b4c8c570f41284a95ee04ea96f3";
+    "&appid=4e120b4c8c570f41284a95ee04ea96f3";
 
   // make a fetch request to OpenWeather GeogCode API
   fetch(apiUrlCity).then(function (response) {
@@ -32,9 +32,9 @@ var getCityWeather = function (geoCode, citySearch) {
     return;
   }
 
-  var cityLat = geoCode[0].lat;
-  var cityLon = geoCode[0].lon;
-  var cityFull = citySearch + ", " + geoCode[0].country;
+  var cityLat = geoCode.coord.lat;
+  var cityLon = geoCode.coord.lon;
+  var cityFull = citySearch + ", " + geoCode.sys.country;
 
   var apiUrlWeather =
     "https://api.openweathermap.org/data/2.5/onecall?lat=" +
